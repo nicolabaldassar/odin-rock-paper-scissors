@@ -26,36 +26,59 @@ function playRound(playerSelection, computerSelection)
     //choose the winner
     if (computerSelection == "Rock")
     {
-        if (playerSelection == "rock")
+        if (playerSelection == "rock"){
             result = "Tie!";
-        else if (playerSelection == "paper")
+            computerPoints++;
+            playerPoints++;
+        }
+        else if (playerSelection == "paper"){
             result = "You win! Paper beats Rock!"
-        else
+            playerPoints++;
+        }
+        else{
             result = "You lose! Rock beats Scissors!"
+            computerPoints++;
+        }
     }
     else if (computerSelection == "Paper")
     {
-        if (playerSelection == "rock")
+        if (playerSelection == "rock"){
             result = "You lose! Paper beats Rock!";
-        else if (playerSelection == "paper")
+            computerPoints++;
+        }
+        else if (playerSelection == "paper"){
             result = "Tie!"
-        else
+            computerPoints++;
+            playerPoints++;
+        }
+        else{
             result = "You win! Scissors beats Rock!"
+            playerPoints++;
+        }
     }
     else
     {
-        if (playerSelection == "rock")
+        if (playerSelection == "rock"){
             result = "You win! Rock beats Scissors!";
-        else if (playerSelection == "paper")
-            result = "You lose! Scissors beats Paper!"
-        else
+            playerPoints++;
+        }
+        else if (playerSelection == "paper"){
+            result = "You lose! Scissors beats Paper!";
+            computerPoints++;
+        }
+        else{
             result = "Tie!"
+            computerPoints++;
+            playerPoints++;
+        }
     }
     return result;
 }
 //this function manage the entire game cycle
 function game()
 {
+    computerPoints = 0;
+    playerPoints= 0;
     console.log("The game started!");
     for (let i = 0; i < 5; i++)
     {
@@ -65,7 +88,15 @@ function game()
         console.log("The computer selection is " + computerSelection);
         console.log(playRound(playerSelection, computerSelection));
     }
-    console.log("The game is finished!");
+    if (playerPoints > computerPoints)
+        console.log("You win the game. The computer lose!");
+    else if (computerPoints > playerPoints)
+        console.log("You lose the game. The computer win!");
+    else
+        console.log("You and the computer have the same points. It's a Tie!");
+    return 0;
 }
 //here I start the game calling the main function
+let computerPoints;
+let playerPoints;
 game();
