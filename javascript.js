@@ -3,22 +3,27 @@ function getComputerChoice (min, max)
 {
     let choice = (Math.floor(Math.random() * max ) + min);
     if(choice == 1)
-        return "Rock";
+        return "rock";
     else if (choice == 2)
-        return "Paper";
+        return "paper";
     else
-        return "Scissors";
+        return "scissors";
 }
 //get the player choice
 function getPlayerChoice()
 {
-    let playerChoice = prompt("Write your choice here!");
+    //ask the choice
+    let playerChoice = prompt("Choose Rock, Paper or Scissors!");
+    //make the selection case-insensitive
+    playerChoice = playerChoice.toLowerCase();
+    //return the lowercase version of the player choice
     return playerChoice;
 }
 //play a single round
 function playRound(playerSelection, computerSelection)
 {
-    
+    computerSelection = getComputerChoice(1, 3);
+    playerSelection = getPlayerChoice();
+    console.log(playerSelection);
 }
-let h = getComputerChoice(1, 3);
-console.log(h);
+playRound();
